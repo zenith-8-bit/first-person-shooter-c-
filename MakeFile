@@ -1,0 +1,22 @@
+# ── CORRIDOR FPS ──────────────────────────────────────────────
+#  Linux/macOS:   make
+#  Windows (GCC): make CXX=g++ (MinGW)
+#  Windows (MSVC): cl /O2 /std:c++17 fps.cpp
+
+CXX      ?= g++
+CXXFLAGS  = -O2 -std=c++17 -Wall -Wextra
+
+# Windows via MinGW needs nothing extra
+# Linux/macOS — no extra libs needed (uses termios + ANSI)
+
+TARGET = fps
+
+all: $(TARGET)
+
+$(TARGET): fps.cpp
+	$(CXX) $(CXXFLAGS) fps.cpp -o $(TARGET)
+
+clean:
+	rm -f $(TARGET) fps.exe
+
+.PHONY: all clean
